@@ -1,0 +1,9 @@
+name: trexu-bot
+services:
+  - name: bot
+    type: worker
+    env: python
+    build:
+      builder: buildpack
+    run:
+      command: python bot2.py
