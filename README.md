@@ -1,63 +1,63 @@
 # Trexu Bot 🎵
 
-ربات چندمنظوره تلگرام برای **تشخیص آهنگ، جست‌وجو و دانلود موسیقی** با معماری ماژولار و آماده‌ی اجرا روی سرور، Docker و Termux.
+A modular Telegram music bot for song recognition, music search, and media downloads. Built with Python and designed for local development, Docker, and Termux deployments.
 
-## قابلیت‌ها
+## Highlights
 
-- تشخیص آهنگ با AudD
-- جست‌وجو و دریافت اطلاعات آهنگ از سرویس‌های موسیقی
-- دانلودر چندمنظوره با `yt-dlp`
-- صف دانلود با اولویت کاربران VIP
-- سیستم VIP، پرداخت دستی و ارجاع دوستان
-- Force Join چندکاناله
-- پنل مدیریت و گزارش سلامت ربات
-- تاریخچه دانلود و پشتیبانی از زبان فارسی و انگلیسی
-- پاک‌سازی خودکار فایل‌های موقت
-- پشتیبانی از SQLite برای اجرای ساده و PostgreSQL برای محیط production
+- Song recognition powered by AudD
+- Music search and metadata retrieval
+- Multi-purpose downloading with `yt-dlp`
+- Download queue with VIP priority support
+- VIP, manual payment, and referral features
+- Multi-channel force-join support
+- Admin dashboard and bot health reporting
+- Download history with Persian and English support
+- Automatic cleanup of temporary files
+- SQLite for simple deployments and PostgreSQL for production environments
 
-## ساختار پروژه
+## Project Structure
 
 ```text
 .
-├── bot2.py                 # نقطه ورود برنامه
-├── trexu_bot/              # کد اصلی برنامه
-│   ├── handlers/           # مدیریت پیام‌ها و رویدادهای تلگرام
-│   ├── services/           # منطق سرویس‌ها و دانلود
-│   ├── db/                 # مدل‌ها و اتصال دیتابیس
-│   ├── keyboards/          # کیبوردهای Reply و Inline
-│   └── utils/              # ابزارهای کمکی
-├── data/                   # داده‌های runtime (در Git نادیده گرفته می‌شود)
-├── .env.example            # الگوی متغیرهای محیطی
+├── bot2.py                 # Application entry point
+├── trexu_bot/              # Core application code
+│   ├── handlers/           # Telegram events and message handlers
+│   ├── services/           # Service integrations and download logic
+│   ├── db/                 # Database models and connections
+│   ├── keyboards/          # Reply and inline keyboards
+│   └── utils/              # Shared utilities
+├── data/                   # Runtime data (ignored by Git)
+├── .env.example            # Environment variable template
 ├── Dockerfile
 └── requirements.txt
 ```
 
-## اجرای محلی
+## Getting Started
 
-> Python 3.11 یا بالاتر و `ffmpeg` لازم است.
+> Requires Python 3.11+ and `ffmpeg`.
 
 ```bash
 git clone https://github.com/Aslamyh0660/trexubot2.git
 cd trexubot2
 python -m venv .venv
-source .venv/bin/activate  # در ویندوز: .venv\\Scripts\\activate
+source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt
 cp .env.example .env
-# فایل .env را با مقادیر واقعی تکمیل کنید
+# Add your values to .env
 python bot2.py
 ```
 
-## تنظیمات
+## Configuration
 
-هرگز فایل `.env` یا توکن‌های واقعی را commit نکنید. متغیرهای اصلی:
+Never commit `.env` files, API keys, or bot tokens. Main configuration areas include:
 
-- `BOT_TOKEN` و `ADMIN_IDS`
+- `BOT_TOKEN` and `ADMIN_IDS`
 - `DATABASE_URL`
-- `AUDD_API_TOKEN` و `GENIUS_API_TOKEN`
-- `CHANNEL_URL` و `SUPPORT_USERNAME`
-- تنظیمات VIP، صف دانلود و مسیر فایل‌ها
+- `AUDD_API_TOKEN` and `GENIUS_API_TOKEN`
+- `CHANNEL_URL` and `SUPPORT_USERNAME`
+- VIP, queue, and storage settings
 
-فهرست کامل در [`.env.example`](.env.example) قرار دارد.
+See [`.env.example`](.env.example) for the complete configuration template.
 
 ## Docker
 
@@ -66,20 +66,18 @@ docker build -t trexu-bot .
 docker run --env-file .env trexu-bot
 ```
 
-## استقرار
+## Deployment Guides
 
-راهنماهای آماده:
+- [Cloud deployment](DEPLOY.md)
+- [Termux setup](TERMUX.md)
+- [Marketing plan](MARKETING_PLAN.md)
 
-- [استقرار روی سرویس‌های ابری](DEPLOY.md)
-- [راه‌اندازی در Termux](TERMUX.md)
-- [برنامه بازاریابی](MARKETING_PLAN.md)
+## Security and Responsible Use
 
-## ملاحظات امنیتی و حقوقی
+- Store secrets only in environment variables or your deployment platform's secret manager.
+- Use downloading features in accordance with the source services' terms and applicable copyright laws.
+- PostgreSQL and persistent storage are recommended for production deployments.
 
-- کلیدها و توکن‌ها را فقط در Secret/Environment Variables سرویس استقرار نگه دارید.
-- استفاده از قابلیت دانلود باید مطابق قوانین سرویس‌های منبع و قوانین کپی‌رایت محل استفاده باشد.
-- برای محیط production، استفاده از PostgreSQL و فضای ذخیره‌سازی پایدار توصیه می‌شود.
+## License
 
-## مجوز
-
-مجوز پروژه هنوز تعیین نشده است. پیش از استفاده تجاری یا بازتوزیع، مجوز مناسب به مخزن اضافه کنید.
+A license has not been selected yet. Add an appropriate license before commercial use or redistribution.
